@@ -8,6 +8,7 @@ import { config } from "dotenv";
 config();
 
 const app = express();
+const PORT = process.env.PORT || 6001;
 
 app.use(morgan("tiny"));
 app.use(express.json({ limit: "50mb" }));
@@ -43,6 +44,6 @@ mongoose.connect(
   }
 );
 
-app.listen(6001, () => {
-  console.log(`server is running at port 6001`);
+app.listen(PORT, () => {
+  console.log(`server is running at port ${PORT}`);
 });
