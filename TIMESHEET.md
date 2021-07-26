@@ -29,3 +29,35 @@ Estimated time: 4hrs
     14:00 - 15:00 : Polished and finished interceptors and error handlers
     15:00 - 15:30 : finished milestone 1
     15:30 - 16:00 : deploying back and front end
+
+## Milestone 2
+
+Estimation : 6 hrs
+
+### Part 3
+
+    24 Jul '21
+    15:30 - 16:25: Post creation
+        -Created model
+        -Created controller
+        -Created route
+        -Created delete and add post
+
+### Part 4
+
+    24 Jul '21
+    16:30 - 17:00 : Front end main
+        -added nav
+
+    25 Jul '21
+    16:10 - 20:30 : Front end main
+        -added loading
+        -added post adding
+
+    26 Jul '21
+    17:00 - 20:30:
+        - changed getposts from getfeedposts
+        - added post on feed
+        - added getting current user details
+        - added get userSuggestions
+        - generated followSuggestions

@@ -4,6 +4,8 @@ import morgan from "morgan";
 import cors from "cors";
 import authRouter from "./routes/auth.route.js";
 import { config } from "dotenv";
+import postRouter from "./routes/post.route.js";
+import userRouter from "./routes/user.route.js";
 
 config();
 
@@ -15,8 +17,11 @@ app.use(express.json({ limit: "50mb" }));
 app.use(cors());
 
 app.use("/auth", authRouter);
+app.use("/post", postRouter);
+app.use("/user", userRouter);
 
 app.use(function (err, req, res, next) {
+  console.log(err);
   if (err.toString().match(`TokenExpiredError`)) {
     res.status(401).send({ name: `TokenExpiredError` });
   } else {
