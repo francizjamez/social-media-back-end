@@ -6,8 +6,6 @@ export const authenticatorMiddleware = (req, res, next) => {
   } else {
     const access_token = req.headers.authorization.split(" ")[1];
 
-    console.log(access_token);
-
     const { _id } = jwt.verify(access_token, process.env.ACCESS_TOKEN_SECRET);
     req._id = _id;
   }

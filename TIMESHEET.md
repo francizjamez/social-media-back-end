@@ -54,6 +54,8 @@ Estimation : 6 hrs
         -added loading
         -added post adding
 
+### Part 5
+
     26 Jul '21
     17:00 - 20:30:
         - changed getposts from getfeedposts
@@ -61,3 +63,17 @@ Estimation : 6 hrs
         - added getting current user details
         - added get userSuggestions
         - generated followSuggestions
+
+    26 Jul '21
+    14:00 - 15:20:
+        -added follow
+        -modified feed
+        -modified user follow suggestions
+        -working on unfollow
+
+    16:20 - 17:30:
+        - added profile component
+
+    18:00 - 20:10:
+        -added follow/unfollow user
+        -added liked/unliked post
