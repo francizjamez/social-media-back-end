@@ -1,5 +1,6 @@
 import asyncHandler from "./asyncHandler.js";
 import PostModel from "../models/post.model.js";
+import UserModel from "../models/user.model.js";
 
 export const addPost = asyncHandler(async (req, res, next) => {
   const { content } = req.body;
@@ -9,9 +10,16 @@ export const addPost = asyncHandler(async (req, res, next) => {
 });
 
 export const getFeedPosts = asyncHandler(async (req, res, next) => {
-  const posts = await PostModel.find()
+  const currentUserId = req._id;
+
+  const currentUser = await UserModel.findOne({ _id: currentUserId });
+
+  let posts = await PostModel.find({})
     .populate("author")
     .sort({ createdAt: `desc` });
+
+  console.log(currentUser.following);
+  posts = posts.filter((el) => currentUser.following.includes(el.author._id));
   res.status(200).send(posts);
 });
 
