@@ -53,15 +53,20 @@ export const logout = asyncHandler(async (req, res, next) => {
 export const getNewToken = asyncHandler(async (req, res, next) => {
   const { refresh_token } = req.body;
 
-  const tokenFound = await TokenModel.findOne({ token: refresh_token });
-
-  if (tokenFound) {
-    jwt.verify(refresh_token, process.env.REFRESH_TOKEN_SECRET);
-    const newAccessToken = jwt.sign(
-      { _id: tokenFound.user },
-      process.env.ACCESS_TOKEN_SECRET
-    );
-
-    res.status(201).send(newAccessToken);
+  try {
+    const tokenFound = await TokenModel.findOne({ token: refresh_token });
+    if (tokenFound) {
+      jwt.verify(refresh_token, process.env.REFRESH_TOKEN_SECRET);
+      const newAccessToken = jwt.sign(
+        { _id: tokenFound.user },
+        process.env.ACCESS_TOKEN_SECRET,
+        { expiresIn: process.env.ACCESS_TOKEN_EXPIRE_TIME }
+      );
+      res.status(201).send(newAccessToken);
+    } else {
+      throw `refreshTokenError`;
+    }
+  } catch (err) {
+    throw `refreshTokenError`;
   }
 });
