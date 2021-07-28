@@ -15,7 +15,7 @@ export const getFeedPosts = asyncHandler(async (req, res, next) => {
   let posts = await PostModel.find({})
     .populate("author")
     .sort({ createdAt: `desc` });
-  console.log(posts);
+
   posts = posts.filter((el) => {
     return (
       currentUser.following.includes(el.author._id) ||

@@ -21,7 +21,6 @@ app.use("/post", postRouter);
 app.use("/user", userRouter);
 
 app.use(function (err, req, res, next) {
-  console.log(err);
   if (err.toString().match(`TokenExpiredError`)) {
     res.status(401).send({ name: `TokenExpiredError` });
   } else if (err.toString().match(`refreshTokenError`)) {
