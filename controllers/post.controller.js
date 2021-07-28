@@ -11,15 +11,16 @@ export const addPost = asyncHandler(async (req, res, next) => {
 
 export const getFeedPosts = asyncHandler(async (req, res, next) => {
   const currentUserId = req._id;
-
   const currentUser = await UserModel.findOne({ _id: currentUserId });
-
   let posts = await PostModel.find({})
     .populate("author")
     .sort({ createdAt: `desc` });
-
-  console.log(currentUser.following);
-  posts = posts.filter((el) => currentUser.following.includes(el.author._id));
+  posts = posts.filter((el) => {
+    return (
+      currentUser.following.includes(el.author._id) ||
+      el.author._id.toString() === currentUserId.toString()
+    );
+  });
   res.status(200).send(posts);
 });
 
