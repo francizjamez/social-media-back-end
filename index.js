@@ -38,7 +38,7 @@ app.use(function (err, req, res, next) {
 });
 
 mongoose.connect(
-  `mongodb+srv://Admin:9TSYWED5W3vrG4E6@cluster0.holko.mongodb.net/social-media-backend?retryWrites=true&w=majority`,
+  process.env.MONGO_ATLAS_URI,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,

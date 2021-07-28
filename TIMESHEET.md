@@ -64,7 +64,7 @@ Estimation : 6 hrs
         - added get userSuggestions
         - generated followSuggestions
 
-    26 Jul '21
+    27 Jul '21
     14:00 - 15:20:
         -added follow
         -modified feed
@@ -77,3 +77,8 @@ Estimation : 6 hrs
     18:00 - 20:10:
         -added follow/unfollow user
         -added liked/unliked post
+
+    28 Jul '21
+    14:00 - 20:00:
+        -bug fixes
+        -optimizations
