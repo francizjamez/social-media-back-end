@@ -79,6 +79,6 @@ Estimation : 6 hrs
         -added liked/unliked post
 
     28 Jul '21
-    14:00 - 20:00:
+    14:00 - 19:20:
         -bug fixes
         -optimizations

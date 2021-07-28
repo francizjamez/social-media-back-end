@@ -13,6 +13,7 @@ export const getFeedPosts = asyncHandler(async (req, res, next) => {
   const currentUserId = req._id;
   const currentUser = await UserModel.findOne({ _id: currentUserId });
   let posts = await PostModel.find({})
+    .limit(10)
     .populate("author")
     .sort({ createdAt: `desc` });
   posts = posts.filter((el) => {
@@ -25,8 +26,8 @@ export const getFeedPosts = asyncHandler(async (req, res, next) => {
 });
 
 export const deletePost = asyncHandler(async (req, res, next) => {
-  const { id } = req.params;
-  const postFound = await PostModel.findOne({ _id: id });
+  const { post_id } = req.params;
+  const postFound = await PostModel.deleteOne({ _id: post_id });
   if (postFound) {
     res.status(202).send(`Successfully deleted post`);
   } else {
