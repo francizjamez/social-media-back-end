@@ -20,7 +20,7 @@ export const getFollowSuggestions = asyncHandler(async (req, res, next) => {
   let followSuggestions = await UserModel.find({
     _id: { $ne: currentUserId },
     followers: { $nin: currentUserId },
-  }).select({ user_name: 1, followers: 1 });
+  }).select({ user_name: 1, followers: 1, display_picture: 1 });
 
   followSuggestions = followSuggestions.sort(() => Math.random() - 0.5);
   followSuggestions = followSuggestions.slice(0, 5);
