@@ -30,11 +30,7 @@ export const deletePost = asyncHandler(async (req, res, next) => {
   const postFound = await PostModel.deleteOne({ _id: post_id });
 
   if (postFound) {
-    if (postFound._id !== req._id) {
-      res.status(401).send(`Cannot delete someone elses post`);
-    } else {
-      res.status(202).send(`Successfully deleted post`);
-    }
+    res.status(202).send(`Successfully deleted post`);
   } else {
     res.status(401).send(`Post not found`);
   }
