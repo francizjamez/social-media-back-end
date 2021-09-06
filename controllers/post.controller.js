@@ -28,8 +28,13 @@ export const getFeedPosts = asyncHandler(async (req, res, next) => {
 export const deletePost = asyncHandler(async (req, res, next) => {
   const { post_id } = req.params;
   const postFound = await PostModel.deleteOne({ _id: post_id });
+
   if (postFound) {
-    res.status(202).send(`Successfully deleted post`);
+    if (postFound._id !== req._id) {
+      res.status(401).send(`Cannot delete someone elses post`);
+    } else {
+      res.status(202).send(`Successfully deleted post`);
+    }
   } else {
     res.status(401).send(`Post not found`);
   }

@@ -13,7 +13,6 @@ authRouter.post("/signup", signup);
 authRouter.post("/login", login);
 authRouter.get("/logout", authenticatorMiddleware, logout);
 authRouter.post("/refresh_token", getNewToken);
-
 authRouter.get("/", (req, res) => res.send("auth here"));
 
 export default authRouter;
